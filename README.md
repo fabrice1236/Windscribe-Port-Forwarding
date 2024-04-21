@@ -1,5 +1,6 @@
-# Windscribe-Ephemeral-Port-Script
+# Windscribe-Port-Forwarding
 
+## Credits
 #### Original Credit: https://github.com/Mibo5354, https://gist.github.com/Mibo5354/cf265bc2108edb839e3607d9c9359dfa
 
 Forked from https://github.com/JNuggets/Windscribe-Ephemeral-Port-Script
@@ -7,14 +8,19 @@ JNuggets' credits :
 This script has been modified from Mibo5454's original to refresh the Windscribe Ephermeral port and set qBittorrents
 listening port automatically.
 
-Disclaimer: Reports of using the script often can lead to account being temporarily disabled. Reduce usage to the minimum required timeframe
+# Disclaimer
+Reports of using the script often can lead to account being temporarily disabled. Reduce usage to the minimum required timeframe
+
+# Description
+This fork updates JNUggets' script with bug fixes, .env functionality for more security and Discord bot capabilities to get a DM when the port is updated !
 
 ## Requirements
 
-* Python (Tested on 3.11.0)
-* selenium Package (Tested on 4.19.0)
-* qbittorrent-api Package (Tested on 2024.3.60)
-* python-dotenv Package (Tested on 1.0.1)
+* Python (last tested on 3.11.0)
+* selenium Package (Last tested on 4.19.0)
+* qbittorrent-api Package (last tested on 2024.3.60)
+* python-dotenv Package (last tested on 1.0.1)
+* discord.py Package (last tested on 2.3.2)
 
 ## Setup
 
