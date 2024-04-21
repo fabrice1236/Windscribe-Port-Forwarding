@@ -2,6 +2,8 @@ from selenium import webdriver
 import selenium      
 from selenium.webdriver.chrome.options import Options
 chrome_options = Options()
+
+
 from dotenv import load_dotenv
 load_dotenv()
 import os
@@ -11,6 +13,10 @@ qbt_username = os.getenv("qbt_username")
 qbt_password = os.getenv("qbt_password")
 qbt_host = os.getenv("qbt_host")
 qbt_port = os.getenv("qbt_port")
+bot_token = os.getenv("bot_token")
+discord_userid = os.getenv("discord_userid")
+acquiredPort = 0
+
 # For using sleep function because selenium  
 # works only when the all the elements of the  
 # page is loaded. 
@@ -18,11 +24,26 @@ import time
 
 import qbittorrentapi
 
+import discord
+intents = discord.Intents.default()
+intents.message_content = True
+
+discordclient = discord.Client(intents=intents)
+
+@discordclient.event
+async def on_ready():
+    print(f'We have logged in as {discordclient.user}')
+    user = await discordclient.fetch_user(discord_userid)
+
+    # Send the acquired port value as a DM
+    await user.send("New Port: " + str(acquiredPort))
+
+
 #Required for running chromedriver headless
 chrome_options.add_argument("--disable-gpu")
 #chrome_options.add_argument("--no-sandbox") # linux only
 chrome_options.add_argument("--headless") #Disable to view chrome
-
+print("Running Chrome Headless")
 from selenium.webdriver.common.keys import Keys  
   
 # Creating an instance webdriver 
@@ -34,12 +55,10 @@ print("Login to Windscribe")
   
 user = browser.find_element("xpath", '//*[@id="username"]') 
   
-# Enter User Name 
 user.send_keys(ws_username) 
   
 passw = browser.find_element("xpath", '//*[@id="pass"]') 
   
-# Enter and Submit Password
 passw.send_keys(ws_password)
 passw.submit()
 
@@ -68,9 +87,6 @@ port = browser.find_element("xpath", '//div[@id="epf-port-info"]//span[1]')
         
 print("New Port: " + port.text)
 aquiredPort = port.text
-# print("Saving to port.txt")
-# with open("port.txt", "w") as text_file:
-#     print(aquiredPort, file=text_file)
   
 # closing the browser 
 browser.close()
@@ -93,3 +109,7 @@ prefs = client.application.preferences
 prefs['listen_port'] = aquiredPort
 client.app.preferences = prefs
 print("Set qBittorrent listening port to " + aquiredPort)
+
+#Send update to discord
+if (discord_userid != ""):
+    discordclient.run(bot_token)
