@@ -2,7 +2,15 @@ from selenium import webdriver
 import selenium      
 from selenium.webdriver.chrome.options import Options
 chrome_options = Options()
-
+from dotenv import load_dotenv
+load_dotenv()
+import os
+ws_username = os.getenv("ws_username")
+ws_password = os.getenv("ws_password")
+qbt_username = os.getenv("qbt_username")
+qbt_password = os.getenv("qbt_password")
+qbt_host = os.getenv("qbt_host")
+qbt_port = os.getenv("qbt_port")
 # For using sleep function because selenium  
 # works only when the all the elements of the  
 # page is loaded. 
@@ -27,12 +35,12 @@ print("Login to Windscribe")
 user = browser.find_element("xpath", '//*[@id="username"]') 
   
 # Enter User Name 
-user.send_keys('username') 
+user.send_keys(ws_username) 
   
 passw = browser.find_element("xpath", '//*[@id="pass"]') 
   
 # Enter and Submit Password
-passw.send_keys('password') 
+passw.send_keys(ws_password)
 passw.submit()
 
 print("Login Successful") 
@@ -55,7 +63,7 @@ reqMatchPort.click()
 print("Request New Port")
 time.sleep(5)
 
-port = browser.find_element("xpath", '//*[@id="epf-port-info"]/span[1]')
+port = browser.find_element("xpath", '//div[@id="epf-port-info"]//span[1]')
 
         
 print("New Port: " + port.text)
@@ -68,7 +76,7 @@ aquiredPort = port.text
 browser.close()
 
 # instantiate a Client using the appropriate WebUI configuration
-client = qbittorrentapi.Client(host='https://qbittorrent.example.com', port=443, username='username', password='password')
+client = qbittorrentapi.Client(host=qbt_host, port=qbt_port, username=qbt_username, password=qbt_password)
 # the Client will automatically acquire/maintain a logged in state in line with any request.
 # therefore, this is not necessary; however, you many want to test the provided login credentials.
 try:
