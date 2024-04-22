@@ -15,7 +15,7 @@ qbt_host = os.getenv("qbt_host")
 qbt_port = os.getenv("qbt_port")
 bot_token = os.getenv("bot_token")
 discord_userid = os.getenv("discord_userid")
-acquiredPort = 0
+aquiredPort = 0
 
 # For using sleep function because selenium  
 # works only when the all the elements of the  
@@ -36,7 +36,7 @@ async def on_ready():
     user = await discordclient.fetch_user(discord_userid)
 
     # Send the acquired port value as a DM
-    await user.send("New Port: " + str(acquiredPort))
+    await user.send("New Port: " + str(aquiredPort))
 
 
 #Required for running chromedriver headless
