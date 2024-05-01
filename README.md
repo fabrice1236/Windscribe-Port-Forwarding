@@ -10,7 +10,7 @@ This script has been modified from Mibo5454's original to refresh the Windscribe
 listening port automatically.
 
 # Disclaimer
-Reports of using the script often can lead to account being temporarily disabled. Reduce usage to the minimum required timeframe
+Reports of using the script often can lead to account being temporarily disabled. Windscribe support confirmed that it is allowed to use scripts such as this one, but keep it at once a week, don't spam their servers ;).
 
 # Description
 This fork updates JNuggets' script with bug fixes, .env functionality for more security and Discord bot capabilities to get a DM when the port is updated (optional) !
