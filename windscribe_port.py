@@ -1,3 +1,4 @@
+import sys
 from selenium import webdriver
 import selenium      
 from selenium.webdriver.chrome.options import Options
@@ -37,6 +38,7 @@ async def on_ready():
 
     # Send the acquired port value as a DM
     await user.send("New Port: " + str(aquiredPort))
+    sys.exit()
 
 
 #Required for running chromedriver headless
@@ -113,3 +115,5 @@ print("Set qBittorrent listening port to " + aquiredPort)
 #Send update to discord
 if (discord_userid != ""):
     discordclient.run(bot_token)
+else:
+    sys.exit()
