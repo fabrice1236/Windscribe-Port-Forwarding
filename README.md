@@ -27,7 +27,18 @@ Note : The discord.py package is **not** optional, only the feature is.
 
 ## Setup
 
-To use the script, fill the variables in the .env file and run the script !
+To use the script, create a .env file in the directory of the python script with the following variables :
+
+```
+ws_username=
+ws_password=
+qbt_username=
+qbt_password=
+qbt_host=
+qbt_port=
+bot_token=
+discord_userid=
+```
 
 Replace :
   * ws_username and ws_password with your Windscribe credentials
