@@ -75,11 +75,14 @@ time.sleep(5)
 
 print("")
 delPort = browser.find_element("xpath", '//*[@id="request-port-cont"]/button')
-delPort.click()
-print("Delete Port")
-time.sleep(5)
+delPortText = delPort.text
+print("Text of delPort button: " + delPortText)
+if delPortText == "Delete Port":
+    delPort.click()
+    print("Delete Port")
+    time.sleep(5)
 
-reqMatchPort = browser.find_element("xpath", '//*[@id="request-port-cont"]/button[2]')
+reqMatchPort = browser.find_element("xpath", "//button[normalize-space()='Request Matching Port']")
 reqMatchPort.click()
 print("Request New Port")
 time.sleep(5)
